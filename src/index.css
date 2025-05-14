@@ -1,1 +1,7 @@
 @import "tailwindcss";
+.no-scrollbar {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
