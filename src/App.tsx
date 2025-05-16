@@ -1,3 +1,6 @@
+import { CgArrowRight, CgClose } from "react-icons/cg";
+import { FaPoundSign } from "react-icons/fa";
+import { TiTick } from "react-icons/ti";
 import { WobbleCard } from "./components/WobbleCard";
 import { skipData } from "./data/data";
 import type { SkipTypes } from "./types/dataTypes";
@@ -23,96 +26,60 @@ function App() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {skipData.map((item: SkipTypes) => (
-            <WobbleCard key={item.id} className="h-full flex flex-col">
-              <div className="flex flex-col h-full w-full">
-                <div className="flex justify-center w-full mb-4">
-                  <div className="w-full">
-                    <img
-                      src={SKIP_IMAGE}
-                      alt="Skip bin"
-                      className="w-full h-40 object-contain"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2 mb-4 w-full mx-auto px-10 ">
-                  {item.allows_heavy_waste && (
-                    <div className="flex items-center gap-2 justify-start">
-                      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 dark:bg-green-900">
-                        <svg
-                          className="w-4 h-4 text-green-600"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      </span>
-                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">
-                        Heavy waste allowed
-                      </span>
-                    </div>
-                  )}
-                  {item.allowed_on_road ? (
-                    <div className="flex items-center gap-2 justify-start">
-                      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 dark:bg-green-900">
-                        <svg
-                          className="w-4 h-4 text-green-600"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      </span>
-                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">
-                        Road placement allowed
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center gap-2 justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-5 h-5 text-red-500 flex-shrink-0"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span className="text-sm text-red-600 dark:text-red-400 font-medium">
-                        Road placement not allowed
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <p className="text-sm text-center text-gray-600 dark:text-gray-300 mb-3 w-full">
-                  Hire Period: {item.hire_period_days} days
-                </p>
-                <div className="flex items-center justify-between mb-3 px-4 py-2 rounded-xl bg-purple-50 dark:bg-purple-900/30 border border-purple-100 dark:border-purple-800 shadow-sm w-full">
-                  <span className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
-                    {item.size}m³ Skip
-                  </span>
-                  <span className="text-lg font-bold text-white bg-purple-700 dark:bg-purple-500 px-4 py-1 rounded-full shadow-md border-2 border-purple-200 dark:border-purple-400">
-                    £{item.price_before_vat}
-                  </span>
-                </div>
-                <button className="w-full bg-purple-100 dark:bg-purple-800 text-purple-800 dark:text-purple-100 font-semibold py-2 px-6 rounded-lg hover:bg-purple-200 dark:hover:bg-purple-700 transition-colors duration-200 shadow-sm border border-purple-200 dark:border-purple-700 mt-auto">
-                  Select this skip
-                </button>
+            <WobbleCard
+              key={item.id}
+              containerClassName={`hover:shadow-sm shadow-purple-600  cursor-pointer
+                rounded-lg`}
+            >
+              <div className="w-full ">
+                <img
+                  src={SKIP_IMAGE}
+                  alt="Skip bin"
+                  className="w-full h-40 object-cover rounded-lg rounded-b-none"
+                />
               </div>
+              <section className="dark:text-white flex flex-col px-5 py-7">
+                <p className="text-2xl">
+                  {item.size}m<sup>3</sup> Skip
+                </p>
+                <p
+                  className={`flex flex-row items-center ${
+                    item.allows_heavy_waste ? "text-green-500" : "text-red-400"
+                  }`}
+                >
+                  {item.allows_heavy_waste ? (
+                    <TiTick className={""} size={25} />
+                  ) : (
+                    <CgClose className="" size={25} />
+                  )}
+                  {`Heavy waste ${
+                    item.allows_heavy_waste ? "allowed" : "not allowed"
+                  }`}
+                </p>
+                <p
+                  className={`flex flex-row items-center ${
+                    item.allowed_on_road ? "text-green-500" : "text-red-400"
+                  }`}
+                >
+                  {item.allowed_on_road ? (
+                    <TiTick className={""} size={25} />
+                  ) : (
+                    <CgClose className="" size={25} />
+                  )}
+                  {`Road placement ${
+                    item.allowed_on_road ? "allowed" : "not allowed"
+                  }`}
+                </p>
+                <p className="flex items-center flex-row text-2xl text-purple-300 ">
+                  <FaPoundSign /> {item.price_before_vat}
+                </p>
+                <p className="text-[12px] font-light">
+                  Hire Period is {item.hire_period_days} Days
+                </p>
+                <button className=" bg-purple-600 py-4 mt-2 flex items-center justify-center gap-2 rounded-lg font-semibold hover:bg-purple-900">
+                  Select this skip <CgArrowRight size={25} />
+                </button>
+              </section>
             </WobbleCard>
           ))}
         </div>
