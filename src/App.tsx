@@ -28,7 +28,7 @@ function App() {
           {skipData.map((item: SkipTypes) => (
             <WobbleCard
               key={item.id}
-              containerClassName={`hover:shadow-sm shadow-purple-600  cursor-pointer
+              containerClassName={`hover:border-4 border-purple-600  cursor-pointer
                 rounded-lg`}
             >
               <div className="w-full ">
