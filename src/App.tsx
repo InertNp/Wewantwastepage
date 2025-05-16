@@ -10,7 +10,7 @@ const SKIP_IMAGE =
 
 function App() {
   return (
-    <main className="no-scrollbar bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 min-h-screen w-screen overflow-hidden">
+    <main className="no-scrollbar min-h-screen w-screen max-h-screen max-w-screen overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 ">
       <div className="max-w-7xl mx-auto px-6 py-16 no-scrollbar overflow-hidden">
         <div className="flex flex-col items-center justify-center mb-10">
           <h1 className="text-4xl font-semibold text-center mb-2 text-gray-900 dark:text-white tracking-tight">
