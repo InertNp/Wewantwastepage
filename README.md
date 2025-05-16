@@ -1,54 +1,187 @@
-# React + TypeScript + Vite
+# We Want Waste - Skip Hire Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive web application for skip hire services built with React, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Interactive skip selection cards with hover animations
+- Responsive grid layout (1-3 columns based on viewport)
+- Dark mode support
+- Real-time pricing display
+- Visual indicators for skip restrictions
+- Animated UI components
 
-## Expanding the ESLint configuration
+## 🛠️ Technical Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend Framework**: React 19
+- **Language**: TypeScript
+- **Build Tool**: Vite 6
+- **Styling**: Tailwind CSS 4
+- **Animations**:
+  - Framer Motion
+  - Custom canvas-based animations
+- **Icons**: React Icons
+- **Container**: Docker
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🏗️ Project Structure
+
+```
+src/
+├── components/         # Reusable UI components
+│   ├── CardSpotlight  # Interactive card with spotlight effect
+│   └── WobbleCard     # Card with wobble animation
+├── data/              # Data layer
+│   └── data.ts        # Skip configurations
+├── types/             # TypeScript type definitions
+│   └── dataTypes.ts   # Skip type interfaces
+└── lib/               # Utility functions
+    └── utils.ts       # Helper functions
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 Design Principles
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Micro-interactions**: Subtle animations enhance user engagement
+- **Progressive Enhancement**: Core functionality works without JavaScript
+- **Accessibility**: High contrast ratios and semantic HTML
+- **Responsive Design**: Mobile-first approach with breakpoints
+- **Dark Mode**: System preference respected with dark/light themes
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## 💻 Development
+
+### Prerequisites
+
+- Node.js 20+
+- npm/yarn
+
+### Local Setup
+
+```bash
+# Clone repository
+git clone [repository-url]
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
+
+### Docker Setup
+
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
+```
+
+## 🔧 Configuration
+
+### TypeScript
+
+Two separate TypeScript configurations:
+
+- `tsconfig.app.json`: Application-specific settings
+- `tsconfig.node.json`: Node.js environment settings
+
+### ESLint
+
+Extended configuration with:
+
+- React Hooks plugin
+- React Refresh plugin
+- TypeScript support
+
+## 🚢 Deployment
+
+The application can be deployed using:
+
+1. Static hosting (after `npm run build`)
+2. Docker container (uses `serve` package)
+
+### Build
+
+```bash
+# Production build
+npm run build
+
+# Preview build
+npm run preview
+```
+
+## 🧪 Testing
+
+Testing configuration is prepared for:
+
+- Unit tests
+- Component tests
+- Integration tests
+
+## 📦 Dependencies
+
+### Core
+
+- react: ^19.1.0
+- react-dom: ^19.1.0
+- @react-three/fiber: ^9.1.2
+
+### Styling
+
+- tailwindcss: ^4.1.6
+- clsx: ^2.1.1
+- tailwind-merge: ^3.3.0
+
+### Animations
+
+- motion: ^12.11.0
+- three: ^0.176.0
+
+## 📄 License
+
+This project is MIT licensed. See the LICENSE file for details.
+
+## 🎨 Design Principles
+
+- **Micro-interactions**: Subtle animations enhance user engagement
+- **Progressive Enhancement**: Core functionality works without JavaScript
+- **Accessibility**: High contrast ratios and semantic HTML
+- **Responsive Design**: Mobile-first approach with breakpoints
+- **Dark Mode**: System preference respected with dark/light themes
+
+### Design Decisions 🎯
+
+#### Color Psychology
+
+- **Purple Theme**: Chosen deliberately to convey:
+  - Luxury and premium service
+  - Professional and trustworthy brand image
+  - Strong visual hierarchy in UI elements
+
+#### Visual Hierarchy
+
+1. Skip size (Primary focus)
+2. Waste type compatibility
+3. Pricing information
+4. Hire duration
+   This sequence ensures users make informed decisions based on their primary needs first.
+
+#### Accessibility Considerations
+
+- Border highlights on hover instead of shadows
+  - Provides crisper visual feedback
+  - Better visibility for visually impaired users
+  - Higher contrast ratio for enhanced readability
+
+#### Image Treatment
+
+- Full-width container images
+  - Maximizes visual impact
+  - Ensures consistent presentation across different skip types
+  - Accommodates high-resolution product photography
+  - Maintains aspect ratio while scaling
+
+#### Interactive Elements
+
+- Purple border highlight on hover
+  - 4px width for clear visual feedback
+  - Maintains brand consistency
+  - Provides immediate interaction feedback
+  - Meets WCAG accessibility guidelines
